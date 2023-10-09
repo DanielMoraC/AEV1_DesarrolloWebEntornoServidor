@@ -1,0 +1,33 @@
+{% extends "layout.html.twig" %}
+{% block content %}
+    {% if resultados is null %}
+        0 results
+        <a href="/">Inicio</a>
+    {% else %}
+        <table border='1'>
+            <tr>
+                <td>Codigo</td>
+                <td>Apellidos</td>
+                <td>Oficio</td>
+                <td>Jefe</td>
+                <td>Fecha de alta</td>
+                <td>Salario</td>
+                <td>Comisión</td>
+                <td>Numero Departamento</td>
+            </tr>
+            {% for row in resultados %}
+                <tr>
+                    <td>{{row.EMP_NO}}</td>
+                    <td>{{row.APELLIDOS|capitalize}}</td>
+                    <td>{{row.OFICIO}}</td>
+                    <td>{{row.JEFE}}</td>
+                    <td>{{row.FECHA_ALTA|date("d/m/Y")}}</td>
+                    <td>{{row.SALARIO|format_currency('EUR', locale='de')}}</td>
+                    <td>{{row.COMISION|format_currency('EUR', locale='de')}}</td>
+                    <td>{{row.DEPT_NO }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <a href="{{ volver }}">Anterior</a>
+    {% endif %}
+{% endblock %}

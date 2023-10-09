@@ -1,0 +1,37 @@
+{% extends "layout.html.twig" %}
+{% block content %}
+    {% if resultado is null %}
+        0 results
+        <a href="/">Inicio</a>
+    {% else %}
+        <table border='1'>
+            <tr>
+                <td>Codigo</td>
+                <td>Nombre</td>
+                <td>Dirección</td>
+                <td>Ciudad</td>
+                <td>Estado</td>
+                <td>Codigo Postal</td>
+                <td>Area</td>
+                <td>Teléfono</td>
+                <td>Codigo Repr</td>
+                <td>Creito Límite</td>
+                <td>Observaciones</td>
+            </tr>
+            <tr>
+                <td>{{ resultado.CLIENTE_COD }}</td>
+                <td>{{ resultado.NOMBRE|capitalize }}</td>
+                <td>{{ resultado.DIREC }}</td>
+                <td>{{ resultado.CIUDAD|capitalize }}</td>
+                <td>{{ resultado.ESTADO|capitalize }}</td>
+                <td>{{ resultado.COD_POSTAL }}</td>
+                <td>{{ resultado.AREA }}</td>
+                <td>{{ resultado.TELEFONO }}</td>
+                <td>{{ resultado.REPR_COD }}</td>
+                <td>{{ resultado.LIMITE_CREDITO|format_currency('EUR', locale='de') }}</td>
+                <td>{{ resultado.OBSERVACIONES }}</td>
+            </tr>
+        </table>
+        <a href="{{ volver }}">Anterior</a>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "layout.html.twig" %}
+{% block content %}
+    {% if clientes is null %}
+        0 results
+        <a href="/">Inicio</a>
+    {% else %}
+        <form action="/pedidos/">
+            <select name="cliente">
+                {% for row in clientes %}
+                <option value="{{row.cliente_cod}}">{{row.NOMBRE}}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <input type="submit" value="Mostrar">
+        </form> 
+        <br>
+        {% if pedidos is not null %}
+        <h2>Pedidos de {{cliente}}</h2>
+            {% if pedidos is empty %}
+            <h3>No tiene pedidos realizados</h3>
+            {% else %}
+        <table border='1'>
+            <tr>
+                <td>Número Pedido</td>
+            </tr>
+            {% for row in pedidos %}
+                <tr>
+                    <td><a href='/detallePedido/{{row.PEDIDO_NUM}}'>{{row.PEDIDO_NUM}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+            {% endif %}
+        {% endif %}
+        <a href="{{ volver }}">Anterior</a>
+    {% endif %}
+{% endblock %}

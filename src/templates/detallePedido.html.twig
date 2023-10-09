@@ -1,0 +1,27 @@
+{% extends "layout.html.twig" %}
+{% block content %}
+    {% if resultados is null %}
+        0 results
+        <a href="/">Inicio</a>
+    {% else %}
+        <table border='1'>
+            <tr>
+                <td>Número Pedido</td>
+                <td>Fecha</td>
+                <td>Tipo</td>
+                <td>Código Cliente</td>
+                <td>Fecha envío</td>
+                <td>Total</td>
+            </tr>
+            <tr>
+                <td>{{resultados.PEDIDO_NUM}}</td>
+                <td>{{resultados.PEDIDO_FECHA|date("d/m/Y")}}</td>
+                <td>{{resultados.PEDIDO_TIPO}}</td>
+                <td>{{resultados.CLIENTE_COD}}</td>
+                <td>{{resultados.FECHA_ENVIO|date("d/m/Y")}}</td>
+                <td>{{resultados.TOTAL|format_currency('EUR', locale='de')}}</td>
+            </tr>
+        </table>
+        <a href="{{ volver }}">Anterior</a>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "layout.html.twig" %}
+{% block content %}
+    {% if resultados is null %}
+        0 results
+        <a href="/">Inicio</a>
+    {% else %}
+        <table border='1'>
+            <tr>
+                <td>Codigo</td>
+                <td>Nombre Departamento</td>
+                <td>Localidad</td>
+                <td>Color</td>
+            </tr>
+            {% for row in resultados %}
+                <tr>
+                    <td><a href='/empleados/{{row.DEPT_NO}}'>{{row.DEPT_NO}}</a></td>
+                    <td>{{row.DNOMBRE|capitalize}}</td>
+                    <td>{{row.LOC|capitalize}}</td>
+                    <td>{{row.color|capitalize}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <a href="{{ volver }}">Anterior</a>
+    {% endif %}
+{% endblock %}

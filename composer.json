@@ -1,0 +1,20 @@
+{
+  "name": "daw-dwes/aev1-mvc",
+  "authors": [
+    {
+      "name": "dmora_casero",
+      "email": "damoca@floridauniversitaria.es"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "APP\\": "src/",
+      "Config\\": "config/"
+    }
+  },
+  "require": {
+    "twig/twig": "^3.4",
+    "twig/intl-extra": "^3.7",
+    "twig/extra-bundle": "^3.7"
+  }
+}

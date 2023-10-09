@@ -1,0 +1,21 @@
+{% extends "layout.html.twig" %}
+{% block content %}
+    {% if resultados is null %}
+        0 results
+        <a href="/">Inicio</a>
+    {% else %}
+        <table border='1'>
+            <tr>
+                <td>Prod Numero</td>
+                <td>Descripción</td>
+            </tr>
+            {% for row in resultados %}
+                <tr>
+                    <td>{{row.PROD_NUM|capitalize}}</td>
+                    <td>{{row.DESCRIPCION|capitalize}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <a href="{{ volver }}">Anterior</a>
+    {% endif %}
+{% endblock %}

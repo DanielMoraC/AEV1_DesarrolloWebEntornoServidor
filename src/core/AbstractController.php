@@ -25,10 +25,6 @@ abstract class AbstractController
         ]);
         $this->twig->addExtension(new IntlExtension());
         $this->twig->addExtension(new \Twig\Extension\DebugExtension());
-        //Esta línea nos sirve para poder declarar una variable global desde PHP a TWIG
-        //En este caso pasamos el nombre del servidor, pero podría ser cualquier varíable de PHP. Genéralmente se usa
-        //para las cookies y datos de sesión de usuarios.
-        $this->twig->addGlobal('server_name', $_SERVER['SERVER_NAME']);
     }
 
     /**
